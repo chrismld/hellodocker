@@ -3,17 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace HelloDocker.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+
+        private readonly EnvironmentConfig _configuration;
+
+        public ValuesController(IOptions<EnvironmentConfig> configuration)
+        {
+            _configuration = configuration.Value;
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "Hello", "I'm a .NET Core API", "Running inside of a Docker Container" };
+            return new string[] { "Hello", "I'm a .NET Core API", "Running inside of a Docker Container", $"And my Name is: {_configuration.ProfileName}" };
         }
 
         // GET api/values/5

@@ -4,5 +4,6 @@ services:
   hellodocker:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ProfileName=Christian
     ports:
       - "80"
