@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  hellodocker:
+    image: hellodocker
+    build:
+      context: ./HelloDocker
+      dockerfile: Dockerfile
